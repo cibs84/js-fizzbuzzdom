@@ -10,28 +10,36 @@
 // Applica uno stile differente a seconda del valore dell'indice per i multipli di 3, per i multipli di 5 e per i valori che sono sia multipli di 3 che di 5 (seguendo le regole della Milestone 1).
 // Per questa Milestone avete lo screenshot allegato al messaggio.
 
-// SELEZIONO L'ELEMENTO UL
+// SELEZIONO L'ELEMENTO ul
 const allBoxes = document.querySelector('.all-boxes');
 
-// CICLO FOR PER CREAZIONE ELEMENTI LI
+// CICLO FOR PER LA CREAZIONE DI 100 ELEMENTI li DA APPENDERE ALL'ELEMENTO ul.all-boxes
 for (let i = 1; i <= 100; i++) {
-    // SE i è MULTIPLO DI 3 E 5
+    // CREO VARIABILI 'contentBox' PER IL MESSAGGIO DA INSERIRE NELL'ELEMENTO li E 'classBox' PER LE CLASSI DA ATTRIBUIRE AGLI ELEMENTI li NELLE SEGUENTI CONDIZIONI
+    let contentBox;
+    let classBox;
+
+    // SE 'i' è MULTIPLO DI 3 E 5 STAMPO FIZZBUZZ
     if (i % 3 === 0 && i % 5 === 0) {
-        let contentBox = 'FizzBuzz';
-        let classBox = 'multiple-3-5';
-        allBoxes.innerHTML += `<li class="box ${classBox}">${contentBox}</li>`;
-    // SE i è MULTIPLO DI 3
+        contentBox = 'FizzBuzz';
+        classBox = 'multiple-3-5';
+    // SE 'i' è MULTIPLO DI 3 STAMPO FIZZ
     } else if (i % 3 === 0) {
-        let contentBox = 'Fizz';
-        let classBox = 'multiple-3';
-        allBoxes.innerHTML += `<li class="box ${classBox}">${contentBox}</li>`;
-    // SE i è MULTIPLO DI 5
+        contentBox = 'Fizz';
+        classBox = 'multiple-3';
+    // SE 'i' è MULTIPLO DI 5 STAMPO BUZZ
     } else if (i % 5 === 0) {
-        let contentBox = 'Buzz';
-        let classBox = 'multiple-5';
-        allBoxes.innerHTML += `<li class="box ${classBox}">${contentBox}</li>`;
-    // ALTRIMENTI
+        contentBox = 'Buzz';
+        classBox = 'multiple-5';
+        // ALTRIMENTI STAMPO IL NUMERO CONTENUTO IN 'i'
     } else {
-        allBoxes.innerHTML += `<li class="box">${i}</li>`;
+        contentBox = i;
+        classBox = '';
     }
+
+    // CREO UN NUOVO BOX (ELEMENTO li) NELLA VARIABILE 'newBox' CON IL MESSAGGIO DELLA VARIABILE 'contentBox' E LA CLASSE CONTENUTA NELLA VARIABILE 'classBox'
+    const newBox = `<li class="box ${classBox}">${contentBox}</li>`
+    
+    // INSERISCO NELL'ELEMENTO ul IL NUOVO BOX (ELEMENTO li)
+    allBoxes.innerHTML += newBox;
 };
